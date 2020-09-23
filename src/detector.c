@@ -157,6 +157,7 @@ void train_detector(char *datacfg, char *cfgfile, char *weightfile, int *gpus, i
     args.mosaic_bound = net.mosaic_bound;
     args.contrastive = net.contrastive;
     args.contrastive_jit_flip = net.contrastive_jit_flip;
+    args.contrastive_color = net.contrastive_color;
     if (dont_show && show_imgs) show_imgs = 2;
     args.show_imgs = show_imgs;
 
@@ -408,6 +409,7 @@ void train_detector(char *datacfg, char *cfgfile, char *weightfile, int *gpus, i
     char buff[256];
     sprintf(buff, "%s/%s_final.weights", backup_directory, base);
     save_weights(net, buff);
+    printf("If you want to train from the beginning, then use flag in the end of training command: -clear \n");
 
 #ifdef OPENCV
     release_mat(&img);
